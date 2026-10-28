@@ -25,6 +25,7 @@ const columns = [
     title: 'Company',
     links: [
       { label: 'About Us', to: '/about' },
+      { label: 'Founders', to: '/founders' },
       { label: 'Research & Innovation', to: '/research' },
       { label: 'Contact', to: '/contact' },
     ],

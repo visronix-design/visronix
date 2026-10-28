@@ -70,6 +70,7 @@ export const navigation: NavGroup[] = [
     label: 'Company',
     children: [
       { label: 'About Us', to: '/about' },
+      { label: 'Founders', to: '/founders' },
       { label: 'Research & Innovation', to: '/research' },
       { label: 'Projects & Portfolio', to: '/projects' },
     ],

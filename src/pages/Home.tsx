@@ -287,6 +287,11 @@ export default function Home() {
               className="mt-9"
               context={{ kind: 'general' }}
               whatsappLabel="WhatsApp us"
+              emailLabel="Email us"
+              email={{
+                subject: 'General enquiry — VISRONIX Technologies',
+                body: 'Hello VISRONIX Technologies,\n\nI would like to enquire about your programmes, products, and services.',
+              }}
             />
             <p className="data-xs mt-8 text-dim">
               {site.location.toUpperCase()} · WHATSAPP {WHATSAPP_DISPLAY}

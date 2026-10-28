@@ -6,6 +6,7 @@ mkdirSync('shots', { recursive: true })
 const routes = [
   ['/', 'home'],
   ['/about', 'about'],
+  ['/founders', 'founders'],
   ['/stem-education', 'stem'],
   ['/electronic-components', 'store'],
   ['/iot-solutions', 'iot'],
@@ -31,6 +32,11 @@ for (const [route, name] of routes) {
     window.scrollTo({ top: 0, behavior: 'instant' })
   })
   await page.waitForTimeout(900)
+  // force-fetch + decode every image (lazy portraits can lose the race
+  // against the programmatic scroll and capture blank otherwise)
+  await page.evaluate(async () => {
+    await Promise.all([...document.images].map((i) => i.decode().catch(() => {})))
+  })
   await page.screenshot({ path: `shots/${name}.png`, fullPage: true })
   console.log('shot', name)
 }

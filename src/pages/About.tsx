@@ -4,7 +4,6 @@ import { useSeo } from '@/lib/seo'
 import { PageHero } from '@/components/ui/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
 import { SectionHead } from '@/components/ui/SectionHead'
-import { EmptyState } from '@/components/ui/EmptyState'
 import { Button } from '@/components/ui/Button'
 import { Led } from '@/components/instrument/Led'
 import { divisions } from '@/data/divisions'
@@ -187,10 +186,15 @@ export default function About() {
             />
           </Reveal>
           <Reveal className="mt-10 grid gap-px border border-line bg-line lg:grid-cols-2">
-            <EmptyState title="Team profiles coming soon">
-              Team member profiles will be published here once reviewed and approved for the
-              public site.
-            </EmptyState>
+            <div className="flex flex-col items-center justify-center gap-4 bg-ink p-8 text-center">
+              <Led state="lit">FOUNDER PROFILES — PUBLISHED</Led>
+              <p className="body-text max-w-sm text-[0.9375rem]">
+                The founders and leadership team are now published on the Founders page.
+              </p>
+              <Button to="/founders" variant="outline" size="sm">
+                Meet the founders
+              </Button>
+            </div>
             <div className="flex flex-col items-center justify-center gap-4 bg-ink p-8 text-center">
               <Led state="off">ACHIEVEMENTS &amp; MILESTONES — AWAITING VERIFICATION</Led>
               <p className="body-text max-w-sm text-[0.9375rem]">

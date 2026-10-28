@@ -14,7 +14,7 @@ npm run lint       # oxlint
 
 ## Pages
 
-`/` · `/about` · `/stem-education` · `/electronic-components` · `/iot-solutions` · `/engineering-projects` · `/agrinex` · `/research` · `/projects` · `/contact` · 404 fallback.
+`/` · `/about` · `/founders` · `/stem-education` · `/electronic-components` · `/iot-solutions` · `/engineering-projects` · `/agrinex` · `/research` · `/projects` · `/contact` · 404 fallback.
 
 ## Central configuration
 
@@ -47,7 +47,8 @@ Content that must be client-verified is labeled in the UI and in `src/data/`:
 - `src/data/projects.ts` — portfolio contains only AGRINEX (status: prototype). Add verified case studies as work completes.
 - `src/data/agrinex.ts` — capability lists intentionally show "Details to be published" until verified on hardware.
 - `src/config/site.ts` — `socialLinks` is empty; the site renders honest "coming soon" states rather than fake links.
-- Team profiles and achievements are placeholder panels on `/about` pending verified profiles.
+- `src/data/founders.ts` — the four people on `/founders` are derived verbatim from client-provided portrait filenames in `data/` (name + position); biographies are deliberately absent until the client supplies verified text. Portraits are served from `public/founders/` under their exact original filenames.
+- About points to `/founders` for people; achievements panels on `/about` remain pending verified content.
 
 ## SEO
 
@@ -76,7 +77,7 @@ The site is a static SPA after `npm run build` — no server code.
 With the preview server running on port 4173 (`npm run preview -- --port 4173 --strictPort`):
 
 ```bash
-node scripts\smoke-test.mjs   # 72 checks: overflow at 4 viewports, nav, store, forms, WhatsApp/email URLs, a11y
+node scripts\smoke-test.mjs   # 79 checks: overflow at 4 viewports, nav, store, forms, WhatsApp/email URLs, a11y
 node scripts\shots.mjs        # full-page screenshots of all routes into shots/
 ```
 

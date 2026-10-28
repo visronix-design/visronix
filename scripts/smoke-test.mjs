@@ -9,6 +9,7 @@ mkdirSync(SHOTS, { recursive: true })
 const routes = [
   ['/', 'home'],
   ['/about', 'about'],
+  ['/founders', 'founders'],
   ['/stem-education', 'stem'],
   ['/electronic-components', 'store'],
   ['/iot-solutions', 'iot'],
@@ -85,6 +86,25 @@ log(true, 'dropdown nav → /agrinex')
 const h1 = await page.locator('h1').first().textContent()
 log(h1?.includes('AGRINEX'), 'agrinex h1', h1 ?? 'MISSING')
 
+// 3b. Dropdown navigation → Founders
+await page.goto(BASE + '/', { waitUntil: 'networkidle' })
+await page.getByRole('button', { name: 'Company' }).click()
+await page.getByRole('link', { name: 'Founders' }).first().click()
+await page.waitForURL('**/founders')
+await page.waitForFunction(() => document.querySelector('h1')?.textContent?.includes('people'))
+const fh1 = await page.locator('h1').first().textContent()
+log(fh1?.includes('people behind VISRONIX'), 'founders h1', fh1 ?? 'MISSING')
+const founderPortraits = await page.locator('img[alt*="Portrait of"]').count()
+log(founderPortraits === 4, 'all 4 founder portraits render', `got ${founderPortraits}`)
+// lazy portraits can lose the race against SPA navigation — force fetch+decode first
+await page.evaluate(async () => {
+  await Promise.all([...document.images].map((i) => i.decode().catch(() => {})))
+})
+const brokenPortraits = await page.evaluate(() =>
+  [...document.querySelectorAll('img[alt*="Portrait of"]')].filter((i) => !i.complete || i.naturalWidth === 0).length,
+)
+log(brokenPortraits === 0, 'founder portrait files resolve (no broken images)', `broken=${brokenPortraits}`)
+
 // 4. Store: search, filter, sort
 await page.goto(BASE + '/electronic-components', { waitUntil: 'networkidle' })
 const countText = await page.locator('[role="status"]').first().textContent()
@@ -149,10 +169,12 @@ log(
   'handoff email is a mailto to the business address',
   handoffMail?.slice(0, 60) ?? 'MISSING',
 )
-log(
-  (await page.getByText('Email enquiries coming soon').count()) === 0,
-  'no stale "coming soon" email states anywhere',
-)
+let staleGhosts = 0
+for (const [route] of routes) {
+  await page.goto(BASE + route, { waitUntil: 'networkidle' })
+  staleGhosts += await page.getByText('Email enquiries coming soon').count()
+}
+log(staleGhosts === 0, 'no stale "coming soon" email states on any route', `ghosts=${staleGhosts}`)
 
 // 7. Contact page
 await page.goto(BASE + '/contact', { waitUntil: 'networkidle' })

@@ -8,6 +8,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 const ROUTES = [
   ['/', 1.0],
   ['/about', 0.8],
+  ['/founders', 0.8],
   ['/stem-education', 0.9],
   ['/electronic-components', 0.9],
   ['/iot-solutions', 0.9],

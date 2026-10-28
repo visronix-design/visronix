@@ -5,6 +5,7 @@ import { Layout } from '@/components/layout/Layout'
 // Route-level code splitting keeps the initial bundle lean.
 const Home = lazy(() => import('@/pages/Home'))
 const About = lazy(() => import('@/pages/About'))
+const Founders = lazy(() => import('@/pages/Founders'))
 const StemEducation = lazy(() => import('@/pages/StemEducation'))
 const ComponentsStore = lazy(() => import('@/pages/ComponentsStore'))
 const IotSolutions = lazy(() => import('@/pages/IotSolutions'))
@@ -31,6 +32,7 @@ export default function App() {
           <Route element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/founders" element={<Founders />} />
             <Route path="/stem-education" element={<StemEducation />} />
             <Route path="/electronic-components" element={<ComponentsStore />} />
             <Route path="/iot-solutions" element={<IotSolutions />} />
