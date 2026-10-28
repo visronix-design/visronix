@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap directive will be added once the production domain is configured.
+# Sitemap: https://YOUR-DOMAIN/sitemap.xml
