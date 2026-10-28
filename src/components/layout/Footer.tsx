@@ -36,7 +36,7 @@ const year = new Date().getFullYear()
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-ink-2">
+    <footer className="on-face border-t border-face-line bg-face">
       <div className="container-x grid gap-12 py-14 md:py-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div className="flex flex-col gap-5">
           <Logo />
@@ -44,12 +44,12 @@ export function Footer() {
             A multidisciplinary technology company in Chennai — education, electronics, automation
             and agricultural robotics under one roof.
           </p>
-          <p className="data-xs text-dim">{site.location.toUpperCase()}</p>
+          <p className="data-xs text-face-low">{site.location.toUpperCase()}</p>
         </div>
 
         {columns.map((col) => (
           <nav key={col.title} aria-label={col.title} className="flex flex-col gap-3">
-            <h2 className="data-xs uppercase text-dim" style={{ letterSpacing: '0.14em' }}>
+            <h2 className="data-xs uppercase text-face-low" style={{ letterSpacing: '0.14em' }}>
               {col.title}
             </h2>
             <ul className="flex flex-col gap-2.5">
@@ -57,7 +57,7 @@ export function Footer() {
                 <li key={l.to}>
                   <Link
                     to={l.to}
-                    className="text-[0.9375rem] text-paper/85 transition-colors hover:text-cyan"
+                    className="tap text-[0.9375rem] text-face-hi/85 transition-colors hover:text-accent-bright"
                   >
                     {l.label}
                   </Link>
@@ -68,9 +68,9 @@ export function Footer() {
         ))}
       </div>
 
-      <div className="border-t border-line">
+      <div className="border-t border-face-line">
         <div className="container-x flex flex-col gap-4 py-6 md:flex-row md:items-center md:justify-between">
-          <p className="data-xs text-dim">
+          <p className="data-xs text-face-low">
             © {year} {site.name.toUpperCase()}. ALL RIGHTS RESERVED.
           </p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
@@ -78,7 +78,7 @@ export function Footer() {
               href={whatsappUrl('Hello VISRONIX Technologies, I would like to know more about your services.')}
               target="_blank"
               rel="noopener noreferrer"
-              className="data-xs flex items-center gap-1.5 text-paper/85 transition-colors hover:text-cyan"
+              className="tap data-xs flex items-center gap-1.5 text-face-hi/85 transition-colors hover:text-accent-bright"
             >
               <MessageCircle className="size-3.5" aria-hidden="true" />
               WHATSAPP {WHATSAPP_DISPLAY}
@@ -86,15 +86,15 @@ export function Footer() {
             {emailConfigured ? (
               <a
                 href={`mailto:${contactEmail}`}
-                className="data-xs text-paper/85 transition-colors hover:text-cyan"
+                className="tap data-xs text-face-hi/85 transition-colors hover:text-accent-bright"
               >
                 {contactEmail.toUpperCase()}
               </a>
             ) : (
-              <span className="data-xs text-dim">BUSINESS EMAIL — COMING SOON</span>
+              <span className="data-xs text-face-low">BUSINESS EMAIL — COMING SOON</span>
             )}
             {socialLinks.length === 0 && (
-              <span className="data-xs text-dim">SOCIAL LINKS — COMING SOON</span>
+              <span className="data-xs text-face-low">SOCIAL LINKS — COMING SOON</span>
             )}
             {socialLinks.map((s) => (
               <a
@@ -102,7 +102,7 @@ export function Footer() {
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="data-xs text-paper/85 transition-colors hover:text-cyan"
+                className="tap data-xs text-face-hi/85 transition-colors hover:text-accent-bright"
               >
                 {s.label.toUpperCase()}
               </a>

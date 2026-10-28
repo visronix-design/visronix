@@ -43,21 +43,21 @@ export default function IotSolutions() {
             {iotProcess.map((p, i) => (
               <div key={p.step} className="flex flex-1 items-center gap-4 max-lg:flex-col max-lg:items-stretch">
                 <div className="panel-2 flex-1 p-5">
-                  <span className="data-xs text-cyan">SIG-{String(i + 1).padStart(2, '0')}</span>
+                  <span className="data-xs text-accent">SIG-{String(i + 1).padStart(2, '0')}</span>
                   <h3 className="title mt-2 text-[1.05rem]">{p.step}</h3>
                   <p className="body-text mt-2 text-[0.9375rem]">{p.text}</p>
                 </div>
                 {i < iotProcess.length - 1 && (
                   <div
                     aria-hidden="true"
-                    className="h-px w-10 shrink-0 bg-line-2 max-lg:h-6 max-lg:w-px"
+                    className="h-px w-10 shrink-0 bg-line-strong max-lg:h-6 max-lg:w-px"
                   />
                 )}
               </div>
             ))}
           </Reveal>
           <Reveal className="brackets panel mt-10 p-6 md:p-7">
-            <p className="data-xs text-cyan" style={{ letterSpacing: '0.14em' }}>
+            <p className="data-xs text-accent" style={{ letterSpacing: '0.14em' }}>
               SCOPE NOTE
             </p>
             <p className="body-text mt-3 max-w-3xl">
@@ -70,7 +70,7 @@ export default function IotSolutions() {
       </section>
 
       {/* ── What we build: module spec rows ──────────── */}
-      <section className="section-y border-t border-line bg-ink-2">
+      <section className="section-y border-t border-line bg-base-2">
         <div className="container-x">
           <Reveal>
             <SectionHead
@@ -86,12 +86,12 @@ export default function IotSolutions() {
                 className="grid gap-x-10 gap-y-3 border-b border-line py-6 md:grid-cols-[16rem_1fr]"
               >
                 <div>
-                  <span className="data-xs text-dim">MOD-{String(i + 1).padStart(2, '0')}</span>
+                  <span className="data-xs text-low">MOD-{String(i + 1).padStart(2, '0')}</span>
                   <h3 className="title mt-1 text-[1.05rem]">{s.name}</h3>
                 </div>
                 <div>
                   <p className="body-text max-w-2xl text-[0.9375rem]">{s.summary}</p>
-                  <p className="data-xs mt-3 text-dim">{s.points.join(' · ').toUpperCase()}</p>
+                  <p className="data-xs mt-3 text-low">{s.points.join(' · ').toUpperCase()}</p>
                 </div>
               </article>
             ))}

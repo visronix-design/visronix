@@ -12,9 +12,9 @@ type Props = {
 /** Consistent page header for interior pages: data path, display heading, lead. */
 export function PageHero({ path, title, lead, children }: Props) {
   return (
-    <section className="border-b border-line">
+    <section className="on-face border-b border-face-line bg-face">
       <Reveal className="container-x pb-14 pt-32 md:pb-20 md:pt-40">
-        <p className="data-xs text-dim" aria-hidden="true">
+        <p className="data-xs text-face-low" aria-hidden="true">
           {path}
         </p>
         <h1 className="display-xl mt-5 max-w-4xl">{title}</h1>

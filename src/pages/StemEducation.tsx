@@ -47,7 +47,7 @@ export default function StemEducation() {
                   </Led>
                 </span>
                 <div>
-                  <h3 className="text-[1.05rem] font-medium text-paper">{d.name}</h3>
+                  <h3 className="text-[1.05rem] font-medium text-hi">{d.name}</h3>
                   <p className="body-text mt-1 text-[0.9375rem]">{d.description}</p>
                 </div>
               </div>
@@ -57,7 +57,7 @@ export default function StemEducation() {
       </section>
 
       {/* ── Programmes: the spec sheet ───────────────── */}
-      <section className="section-y border-t border-line bg-ink-2">
+      <section className="section-y border-t border-line bg-base-2">
         <div className="container-x">
           <Reveal>
             <SectionHead
@@ -72,7 +72,7 @@ export default function StemEducation() {
                 key={c.id}
                 className="grid gap-x-8 gap-y-4 border-b border-line py-7 lg:grid-cols-[3.5rem_1fr_16rem]"
               >
-                <span className="data text-dim">EDU-{String(i + 1).padStart(2, '0')}</span>
+                <span className="data text-low">EDU-{String(i + 1).padStart(2, '0')}</span>
                 <div>
                   <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
                     <h3 className="title">{c.title}</h3>
@@ -82,13 +82,13 @@ export default function StemEducation() {
                     </span>
                   </div>
                   <p className="body-text mt-2 max-w-2xl text-[0.9375rem]">{c.description}</p>
-                  <p className="data-xs mt-3 text-dim">
-                    <span className="text-mist">SKILLS:</span>{' '}
+                  <p className="data-xs mt-3 text-low">
+                    <span className="text-mid">SKILLS:</span>{' '}
                     {c.skills.join(' · ').toUpperCase()}
                   </p>
                 </div>
                 <div className="flex flex-col items-start gap-3 lg:items-end">
-                  <p className="data-xs text-dim lg:text-right">{c.format.toUpperCase()}</p>
+                  <p className="data-xs text-low lg:text-right">{c.format.toUpperCase()}</p>
                   <EnquiryActions
                     compact
                     context={{ kind: 'course', courseName: c.title }}
@@ -157,7 +157,7 @@ export default function StemEducation() {
       </section>
 
       {/* ── Close ────────────────────────────────────── */}
-      <section className="section-y border-t border-line bg-ink-2">
+      <section className="on-face section-y border-t border-face-line bg-face">
         <div className="container-x">
           <Reveal>
             <h2 className="display max-w-2xl">Ready to start building?</h2>

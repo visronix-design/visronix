@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { ChevronDown, Menu, X } from 'lucide-react'
 import { Logo } from '@/components/Logo'
@@ -38,8 +39,8 @@ function Dropdown({ group }: { group: NavGroup }) {
         aria-expanded={open}
         aria-haspopup="true"
         onClick={() => setOpen((v) => !v)}
-        className={`flex min-h-11 items-center gap-1.5 px-4 text-[0.9375rem] font-medium transition-colors hover:text-cyan ${
-          active ? 'text-cyan' : 'text-paper/85'
+        className={`flex min-h-11 items-center gap-1.5 px-4 text-[0.9375rem] font-medium transition-colors hover:text-accent-bright ${
+          active ? 'text-accent-bright' : 'text-face-hi/85'
         }`}
       >
         {group.label}
@@ -49,19 +50,19 @@ function Dropdown({ group }: { group: NavGroup }) {
         />
       </button>
       {open && (
-        <div className="panel absolute left-1/2 top-full z-50 mt-2 w-64 -translate-x-1/2 p-1.5 shadow-xl shadow-black/50">
+        <div className="panel absolute left-1/2 top-full z-50 mt-2 w-64 -translate-x-1/2 p-1.5 shadow-raise">
           {group.children?.map((child) => (
             <NavLink
               key={child.to}
               to={child.to}
               className={({ isActive }) =>
-                `flex items-center justify-between gap-2 px-4 py-3 text-[0.9375rem] transition-colors hover:bg-ink-3 ${
-                  isActive ? 'text-cyan' : 'text-paper/85'
+                `flex items-center justify-between gap-2 px-4 py-3 text-[0.9375rem] transition-colors hover:bg-base-2 ${
+                  isActive ? 'text-accent' : 'text-mid'
                 }`
               }
             >
               {child.label}
-              <span className="data-xs text-dim" aria-hidden="true">
+              <span className="data-xs text-low" aria-hidden="true">
                 →
               </span>
             </NavLink>
@@ -111,7 +112,7 @@ export function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${
-        scrolled ? 'border-b border-line bg-ink/85 backdrop-blur-md' : 'bg-transparent'
+        scrolled ? 'border-b border-face-line bg-face/85 backdrop-blur-md' : 'bg-transparent'
       }`}
     >
       <div className="container-x flex h-[4.25rem] items-center justify-between gap-4">
@@ -127,8 +128,8 @@ export function Header() {
                 key={group.label}
                 to={group.to!}
                 className={({ isActive }) =>
-                  `flex min-h-11 items-center px-4 text-[0.9375rem] font-medium transition-colors hover:text-cyan ${
-                    isActive ? 'text-cyan' : 'text-paper/85'
+                  `flex min-h-11 items-center px-4 text-[0.9375rem] font-medium transition-colors hover:text-accent-bright ${
+                    isActive ? 'text-accent-bright' : 'text-face-hi/85'
                   }`
                 }
               >
@@ -147,46 +148,50 @@ export function Header() {
           onClick={() => setMenuState({ open: true, path: pathname })}
           aria-expanded={menuOpen}
           aria-label="Open menu"
-          className="flex size-11 items-center justify-center text-paper"
+          className="flex size-11 items-center justify-center text-face-hi lg:hidden"
         >
           <Menu className="size-6" aria-hidden="true" />
         </button>
       </div>
 
-      {/* Mobile drawer */}
-      {menuOpen && (
-        <div
-          className="fixed inset-0 z-50 bg-ink lg:hidden"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Site menu"
-        >
-          <div className="container-x flex h-[4.25rem] items-center justify-between">
+      {/* Mobile drawer — portaled to body so it escapes the header's stacking
+          context and the backdrop-filter containing block (which would else
+          collapse the fixed overlay into the 4.25rem header strip once the
+          header is scrolled and blurred). */}
+      {menuOpen &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-50 flex flex-col bg-face lg:hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site menu"
+          >
+          <div className="container-x flex h-[4.25rem] shrink-0 items-center justify-between">
             <Logo />
             <button
               ref={closeBtnRef}
               type="button"
               onClick={() => setMenuState((s) => ({ ...s, open: false }))}
               aria-label="Close menu"
-              className="flex size-11 items-center justify-center text-paper"
+              className="flex size-11 items-center justify-center text-face-hi"
             >
               <X className="size-6" aria-hidden="true" />
             </button>
           </div>
-          <nav aria-label="Mobile" className="container-x mt-2 flex flex-col gap-7 overflow-y-auto pb-16">
+          <nav aria-label="Mobile" className="container-x mt-2 flex min-h-0 flex-1 flex-col gap-7 overflow-y-auto pb-16">
             {navigation.map((group) => (
               <div key={group.label} className="flex flex-col gap-1">
                 {group.to ? (
                   <NavLink
                     to={group.to}
                     className={({ isActive }) =>
-                      `title py-2 ${isActive ? 'text-cyan' : 'text-paper'}`
+                      `title py-2 ${isActive ? 'text-accent-bright' : 'text-face-hi'}`
                     }
                   >
                     {group.label}
                   </NavLink>
                 ) : (
-                  <p className="data-xs px-1 pb-1 pt-2 uppercase text-dim" style={{ letterSpacing: '0.14em' }}>
+                  <p className="data-xs px-1 pb-1 pt-2 uppercase text-face-low" style={{ letterSpacing: '0.14em' }}>
                     {group.label}
                   </p>
                 )}
@@ -195,7 +200,7 @@ export function Header() {
                     key={child.to}
                     to={child.to}
                     className={({ isActive }) =>
-                      `title px-1 py-2.5 ${isActive ? 'text-cyan' : 'text-paper/90'}`
+                      `title px-1 py-2.5 ${isActive ? 'text-accent-bright' : 'text-face-hi/90'}`
                     }
                   >
                     {child.label}
@@ -207,8 +212,9 @@ export function Header() {
               Enquire now
             </Link>
           </nav>
-        </div>
-      )}
+          </div>,
+          document.body,
+        )}
     </header>
   )
 }

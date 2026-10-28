@@ -11,7 +11,7 @@ export default function NotFound() {
   })
 
   return (
-    <section className="flex min-h-[80svh] items-center">
+    <section className="on-face flex min-h-[80svh] items-center bg-face">
       <div className="container-x py-32 text-center">
         <SegmentDisplay
           value="404"
@@ -30,17 +30,17 @@ export default function NotFound() {
             Contact us
           </Button>
         </div>
-        <p className="data-xs mt-8 text-dim">
+        <p className="data-xs mt-8 text-face-low">
           OR EXPLORE{' '}
-          <Link to="/agrinex" className="text-cyan hover:underline">
+          <Link to="/agrinex" className="tap text-accent-bright hover:underline">
             AGRINEX
           </Link>
           ,{' '}
-          <Link to="/stem-education" className="text-cyan hover:underline">
+          <Link to="/stem-education" className="tap text-accent-bright hover:underline">
             STEM PROGRAMMES
           </Link>{' '}
           OR{' '}
-          <Link to="/electronic-components" className="text-cyan hover:underline">
+          <Link to="/electronic-components" className="tap text-accent-bright hover:underline">
             THE COMPONENTS STORE
           </Link>
         </p>

@@ -29,15 +29,15 @@ function FieldShell({
       <label htmlFor={htmlFor} className="field-label">
         {label}
         {required && (
-          <span className="ml-1 text-cyan" aria-hidden="true">
+          <span className="ml-1 text-accent" aria-hidden="true">
             *
           </span>
         )}
       </label>
       {children}
-      {hint && !error && <p className="data-xs text-dim">{hint}</p>}
+      {hint && !error && <p className="data-xs text-low">{hint}</p>}
       {error && (
-        <p className="data-xs text-[#f07a6a]" role="alert">
+        <p className="data-xs text-bad" role="alert">
           {error}
         </p>
       )}
@@ -109,11 +109,11 @@ export function SelectField({
         onChange={(e) => onChange(e.target.value)}
         required={required}
         aria-invalid={error ? true : undefined}
-        className={`field-input ${value === '' ? 'text-dim' : ''}`}
+        className={`field-input ${value === '' ? 'text-low' : ''}`}
       >
         {placeholder && <option value="">{placeholder}</option>}
         {options.map((o) => (
-          <option key={o.value} value={o.value} className="bg-ink-2 text-paper">
+          <option key={o.value} value={o.value} className="bg-panel text-hi">
             {o.label}
           </option>
         ))}

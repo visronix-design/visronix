@@ -37,13 +37,13 @@ export default function Research() {
             />
           </Reveal>
           <Reveal className="mt-10 grid gap-px border border-line bg-line lg:grid-cols-2">
-            <div className="bg-ink p-6 md:p-8">
+            <div className="bg-panel p-6 md:p-8">
               <Led state="lit">ACTIVE CHANNEL</Led>
               <ul className="mt-5 flex flex-col">
                 {active.map((r, i) => (
                   <li key={r.id} className="border-b border-line py-5 last:border-b-0">
                     <div className="flex items-baseline justify-between gap-4">
-                      <span className="data-xs text-dim">RSR-{String(i + 1).padStart(2, '0')}</span>
+                      <span className="data-xs text-low">RSR-{String(i + 1).padStart(2, '0')}</span>
                       <Led state="ok">ACTIVE</Led>
                     </div>
                     <h3 className="title mt-1.5 text-[1.05rem]">{r.name}</h3>
@@ -58,11 +58,11 @@ export default function Research() {
                 {exploring.map((r, i) => (
                   <li key={r.id} className="border-b border-line/60 py-5 last:border-b-0">
                     <div className="flex items-baseline justify-between gap-4">
-                      <span className="data-xs text-dim/70">RSR-{String(i + 4).padStart(2, '0')}</span>
+                      <span className="data-xs text-low/70">RSR-{String(i + 4).padStart(2, '0')}</span>
                       <Led state="off">EXPLORING</Led>
                     </div>
-                    <h3 className="title mt-1.5 text-[1.05rem] text-paper/75">{r.name}</h3>
-                    <p className="body-text mt-1.5 text-[0.9375rem] text-dim">{r.description}</p>
+                    <h3 className="title mt-1.5 text-[1.05rem] text-hi/75">{r.name}</h3>
+                    <p className="body-text mt-1.5 text-[0.9375rem] text-low">{r.description}</p>
                   </li>
                 ))}
               </ul>
@@ -72,7 +72,7 @@ export default function Research() {
       </section>
 
       {/* ── Flagship programme ───────────────────────── */}
-      <section className="section-y border-t border-line bg-ink-2">
+      <section className="section-y border-t border-line bg-base-2">
         <div className="container-x">
           <Reveal>
             <SectionHead
@@ -84,8 +84,8 @@ export default function Research() {
           <Reveal className="brackets panel mt-10 grid gap-8 p-6 md:grid-cols-[1fr_auto] md:items-center md:p-9">
             <div>
               <div className="flex flex-wrap items-center gap-3">
-                <span className="data-xs text-dim">PRG-01</span>
-                <Led state="progress">PROTOTYPE</Led>
+                <span className="data-xs text-low">PRG-01</span>
+                <Led state="warn">PROTOTYPE</Led>
               </div>
               <h3 className="title mt-3">{projects[0].title}</h3>
               <p className="body-text mt-2 max-w-xl">{projects[0].summary}</p>

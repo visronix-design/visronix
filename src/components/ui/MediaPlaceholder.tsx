@@ -20,7 +20,7 @@ export function MediaPlaceholder({ label, className = '', aspect = 'aspect-video
         <p className="data-xs uppercase" style={{ letterSpacing: '0.14em' }}>
           {label}
         </p>
-        <p className="data-xs text-dim/70">AWAITING ASSETS</p>
+        <p className="data-xs text-low/70">AWAITING ASSETS</p>
       </div>
     </div>
   )

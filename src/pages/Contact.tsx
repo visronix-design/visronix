@@ -38,17 +38,17 @@ export default function Contact() {
         <div className="container-x grid gap-5 lg:grid-cols-[1.3fr_1fr_1fr]">
           <Reveal className="brackets panel flex flex-col p-6 md:p-7">
             <div className="flex items-center justify-between gap-3">
-              <span className="data-xs text-dim">PORT 01</span>
+              <span className="data-xs text-low">PORT 01</span>
               <Led state="lit">PRIMARY CHANNEL</Led>
             </div>
             <h2 className="title mt-4 flex items-center gap-2.5">
-              <MessageCircle className="size-5 text-cyan" aria-hidden="true" />
+              <MessageCircle className="size-5 text-accent" aria-hidden="true" />
               WhatsApp
             </h2>
             <p className="body-text mt-2">
               Quickest response — message us directly with your enquiry.
             </p>
-            <p className="data mt-3 text-paper/90">{WHATSAPP_DISPLAY}</p>
+            <p className="data mt-3 text-hi/90">{WHATSAPP_DISPLAY}</p>
             <div className="mt-auto pt-5">
               <a
                 href={whatsappUrl('Hello VISRONIX Technologies, I would like to know more about your services.')}
@@ -66,7 +66,7 @@ export default function Contact() {
             className={`${emailConfigured ? 'panel' : 'ghost-cell'} flex flex-col p-6 md:p-7`}
           >
             <div className="flex items-center justify-between gap-3">
-              <span className={`data-xs ${emailConfigured ? 'text-dim' : 'text-dim/70'}`}>
+              <span className={`data-xs ${emailConfigured ? 'text-low' : 'text-low/70'}`}>
                 PORT 02
               </span>
               {emailConfigured ? (
@@ -75,19 +75,19 @@ export default function Contact() {
                 <Led state="off">NOT WIRED YET</Led>
               )}
             </div>
-            <h2 className={`title mt-4 ${emailConfigured ? '' : 'text-paper/80'}`}>Email</h2>
+            <h2 className={`title mt-4 ${emailConfigured ? '' : 'text-hi/80'}`}>Email</h2>
             {emailConfigured ? (
               <>
                 <p className="body-text mt-2">For detailed briefs and documents.</p>
-                <p className="data mt-3 text-paper/90">
-                  <a href={`mailto:${contactEmail}`} className="hover:text-cyan">
+                <p className="data mt-3 text-hi/90">
+                  <a href={`mailto:${contactEmail}`} className="tap hover:text-accent">
                     {contactEmail}
                   </a>
                 </p>
               </>
             ) : (
               <>
-                <p className="body-text mt-2 text-dim">
+                <p className="body-text mt-2 text-low">
                   Our business email address is being set up and will appear here soon. Until
                   then, WhatsApp is the reliable way to reach us.
                 </p>
@@ -97,29 +97,29 @@ export default function Contact() {
               </>
             )}
             <div className="mt-auto pt-5">
-              <p className="data-xs text-dim">REPLIES DURING WORKING HOURS, MONDAY–SATURDAY</p>
+              <p className="data-xs text-low">REPLIES DURING WORKING HOURS, MONDAY–SATURDAY</p>
             </div>
           </Reveal>
 
           <Reveal className="panel-2 flex flex-col p-6 md:p-7">
             <div className="flex items-center justify-between gap-3">
-              <span className="data-xs text-dim">PORT 03</span>
+              <span className="data-xs text-low">PORT 03</span>
               <Led state="lit">VISITS BY APPOINTMENT</Led>
             </div>
             <h2 className="title mt-4 flex items-center gap-2.5">
-              <MapPin className="size-5 text-cyan" aria-hidden="true" />
+              <MapPin className="size-5 text-accent" aria-hidden="true" />
               Location
             </h2>
             <p className="body-text mt-2">{site.location}</p>
-            <p className="data-xs mt-3 text-dim">VISITS BY APPOINTMENT — MESSAGE US TO ARRANGE ONE</p>
+            <p className="data-xs mt-3 text-low">VISITS BY APPOINTMENT — MESSAGE US TO ARRANGE ONE</p>
             <div className="mt-auto pt-5">
               {socialLinks.length === 0 ? (
-                <p className="data-xs text-dim">
+                <p className="data-xs text-low">
                   OFFICIAL SOCIAL MEDIA LINKS WILL BE PUBLISHED HERE ONCE VERIFIED
                 </p>
               ) : (
                 socialLinks.map((s) => (
-                  <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="data-xs text-paper hover:text-cyan">
+                  <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="data-xs text-hi hover:text-accent">
                     {s.label.toUpperCase()}
                   </a>
                 ))
@@ -130,14 +130,14 @@ export default function Contact() {
       </section>
 
       {/* ── General enquiry: patch panel ─────────────── */}
-      <section className="section-y border-t border-line bg-ink-2">
+      <section className="section-y border-t border-line bg-base-2">
         <div className="container-x grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
           <Reveal>
             <SectionHead
               title="Send a general enquiry"
               lead="Pick a topic, write your message, and we will prepare it as a prefilled WhatsApp or email draft for you to review and send."
             />
-            <p className="data-xs mt-6 text-dim">
+            <p className="data-xs mt-6 text-low">
               YOUR DETAILS STAY IN YOUR BROWSER — THIS FORM DOES NOT TRANSMIT OR STORE ANYTHING ON
               A SERVER
             </p>
@@ -208,9 +208,9 @@ export default function Contact() {
       <section className="border-t border-line">
         <div className="container-x py-8">
           <Reveal>
-            <p className="data-xs text-dim">
+            <p className="data-xs text-low">
               WHATSAPP DEEP LINK:{' '}
-              <span className="text-paper/80">https://wa.me/{WHATSAPP_NUMBER}</span> — OPENING IT
+              <span className="text-hi/80">https://wa.me/{WHATSAPP_NUMBER}</span> — OPENING IT
               SHOWS THE PREFILLED MESSAGE IN WHATSAPP; YOU CHOOSE WHEN TO SEND
             </p>
           </Reveal>

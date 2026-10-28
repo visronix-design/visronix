@@ -14,7 +14,7 @@ export function SectionHead({ title, lead, aside, className = '' }: Props) {
     <div className={className}>
       <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
         <h2 className="display">{title}</h2>
-        {aside && <span className="data-xs text-dim">{aside}</span>}
+        {aside && <span className="data-xs text-low">{aside}</span>}
       </div>
       {lead && <p className="lead mt-4">{lead}</p>}
     </div>

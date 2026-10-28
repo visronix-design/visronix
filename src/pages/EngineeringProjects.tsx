@@ -169,7 +169,7 @@ export default function EngineeringProjects() {
       </section>
 
       {/* ── Support register ─────────────────────────── */}
-      <section className="section-y border-t border-line bg-ink-2">
+      <section className="section-y border-t border-line bg-base-2">
         <div className="container-x">
           <Reveal>
             <SectionHead
@@ -184,8 +184,8 @@ export default function EngineeringProjects() {
                 key={t}
                 className="grid gap-x-8 gap-y-1 border-b border-line py-5 md:grid-cols-[5rem_16rem_1fr]"
               >
-                <span className="data text-dim">PRJ-{String(i + 1).padStart(2, '0')}</span>
-                <span className="text-[1rem] font-medium text-paper">{t}</span>
+                <span className="data text-low">PRJ-{String(i + 1).padStart(2, '0')}</span>
+                <span className="text-[1rem] font-medium text-hi">{t}</span>
                 <span className="body-text text-[0.9375rem]">{d}</span>
               </div>
             ))}
@@ -197,7 +197,7 @@ export default function EngineeringProjects() {
                 href={enquiryWhatsAppUrl({ kind: 'project', domain: 'General', details: 'I have a project idea to discuss.' })}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-cyan underline-offset-4 hover:underline"
+                className="tap text-accent underline-offset-4 hover:underline"
               >
                 Message us on WhatsApp
               </a>{' '}

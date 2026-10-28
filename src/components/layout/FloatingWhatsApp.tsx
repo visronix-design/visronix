@@ -23,7 +23,7 @@ export function FloatingWhatsApp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with VISRONIX on WhatsApp (opens in a new tab)"
-      className={`fixed bottom-5 right-5 z-30 flex size-13 items-center justify-center border border-cyan bg-cyan text-[#062028] shadow-lit transition-all duration-300 hover:bg-[#5ce0f9] ${
+      className={`fixed bottom-5 right-5 z-30 flex size-13 items-center justify-center border border-accent bg-accent text-on-accent shadow-raise transition-all duration-300 hover:bg-accent-strong ${
         visible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'
       }`}
     >

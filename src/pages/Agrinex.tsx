@@ -25,9 +25,9 @@ const problemPoints = [
   },
 ]
 
-const capabilityLed: Record<string, { state: 'ok' | 'progress' | 'off'; label: string }> = {
+const capabilityLed: Record<string, { state: 'ok' | 'warn' | 'off'; label: string }> = {
   implemented: { state: 'ok', label: 'IMPLEMENTED' },
-  'in-development': { state: 'progress', label: 'IN DEVELOPMENT' },
+  'in-development': { state: 'warn', label: 'IN DEVELOPMENT' },
   planned: { state: 'off', label: 'PLANNED' },
 }
 
@@ -42,17 +42,17 @@ export default function Agrinex() {
   return (
     <>
       {/* ── Hero: unit 01 on the bench ───────────────── */}
-      <section className="border-b border-line">
+      <section className="on-face border-b border-face-line bg-face">
         <div className="container-x pb-20 pt-32 md:pb-28 md:pt-40">
           <Reveal>
             <div className="flex flex-wrap items-center gap-5">
-              <Led state="progress">FLAGSHIP // PROTOTYPE IN DEVELOPMENT</Led>
+              <Led state="warn">FLAGSHIP // PROTOTYPE IN DEVELOPMENT</Led>
               <SegmentDisplay value="01" cells={2} height={34} label="Unit 01" />
-              <span className="data-xs text-dim">UNIT 01</span>
+              <span className="data-xs text-face-low">UNIT 01</span>
             </div>
             <h1 className="display-xl mt-6 max-w-3xl">
               AGRINEX.
-              <span className="block text-mist">A robot for the fields that feed us.</span>
+              <span className="block text-face-mid">A robot for the fields that feed us.</span>
             </h1>
             <p className="lead mt-6 max-w-xl">
               An agricultural robot engineered in-house by VISRONIX — designed for real farm rows,
@@ -99,7 +99,7 @@ export default function Agrinex() {
               label="AGRINEX prototype photography"
               aspect="aspect-[4/3]"
             />
-            <p className="data-xs mt-3 text-dim">
+            <p className="data-xs mt-3 text-low">
               PLACEHOLDER SHOWN INTENTIONALLY — CONCEPT RENDERS ARE NEVER PRESENTED AS PHOTOS OF
               THE REAL ROBOT
             </p>
@@ -108,7 +108,7 @@ export default function Agrinex() {
       </section>
 
       {/* ── The problem: field rows ──────────────────── */}
-      <section className="section-y border-t border-line bg-ink-2">
+      <section className="section-y border-t border-line bg-base-2">
         <div className="container-x">
           <Reveal>
             <SectionHead
@@ -122,8 +122,8 @@ export default function Agrinex() {
                 key={p.title}
                 className="grid gap-x-10 gap-y-2 border-b border-line py-6 md:grid-cols-[5rem_16rem_1fr]"
               >
-                <span className="data text-dim">FLD-{String(i + 1).padStart(2, '0')}</span>
-                <span className="text-[1rem] font-medium text-paper">{p.title}</span>
+                <span className="data text-low">FLD-{String(i + 1).padStart(2, '0')}</span>
+                <span className="text-[1rem] font-medium text-hi">{p.title}</span>
                 <span className="body-text text-[0.9375rem]">{p.text}</span>
               </div>
             ))}
@@ -147,13 +147,13 @@ export default function Agrinex() {
                 <div
                   aria-current={j.state === 'current' ? 'step' : undefined}
                   className={`flex-1 p-5 ${
-                    j.state === 'current' ? 'panel border-cyan/50' : 'panel-2'
+                    j.state === 'current' ? 'panel border-accent/50' : 'panel-2'
                   }`}
                 >
                   <div className="flex items-center justify-between gap-3">
-                    <span className="data-xs text-dim">ST-{String(i + 1).padStart(2, '0')}</span>
+                    <span className="data-xs text-low">ST-{String(i + 1).padStart(2, '0')}</span>
                     <Led
-                      state={j.state === 'done' ? 'ok' : j.state === 'current' ? 'progress' : 'off'}
+                      state={j.state === 'done' ? 'ok' : j.state === 'current' ? 'warn' : 'off'}
                     >
                       {j.state === 'done' ? 'COMPLETE' : j.state === 'current' ? 'NOW' : 'PENDING'}
                     </Led>
@@ -164,7 +164,7 @@ export default function Agrinex() {
                 {i < agrinexJourney.length - 1 && (
                   <div
                     aria-hidden="true"
-                    className="h-px w-10 shrink-0 bg-line-2 max-lg:h-6 max-lg:w-px"
+                    className="h-px w-10 shrink-0 bg-line-strong max-lg:h-6 max-lg:w-px"
                   />
                 )}
               </div>
@@ -174,7 +174,7 @@ export default function Agrinex() {
       </section>
 
       {/* ── Capability status: the honest table ──────── */}
-      <section className="section-y border-t border-line bg-ink-2">
+      <section className="section-y border-t border-line bg-base-2">
         <div className="container-x">
           <Reveal>
             <SectionHead
@@ -192,7 +192,7 @@ export default function Agrinex() {
                   className="grid gap-x-10 gap-y-2 border-b border-line py-6 md:grid-cols-[16rem_1fr]"
                 >
                   <div className="flex flex-col gap-2">
-                    <h3 className="text-[1rem] font-medium text-paper">{g.label}</h3>
+                    <h3 className="text-[1rem] font-medium text-hi">{g.label}</h3>
                     <Led state={led.state}>{led.label}</Led>
                   </div>
                   <p className="body-text max-w-2xl text-[0.9375rem]">{g.note}</p>
@@ -222,7 +222,7 @@ export default function Agrinex() {
       </section>
 
       {/* ── Collaboration CTA ────────────────────────── */}
-      <section className="section-y border-t border-line bg-ink-2">
+      <section className="on-face section-y border-t border-face-line bg-face">
         <div className="container-x">
           <Reveal>
             <h2 className="display max-w-2xl">Build AGRINEX with us.</h2>

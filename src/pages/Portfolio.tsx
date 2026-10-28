@@ -11,9 +11,9 @@ import { EnquiryActions } from '@/components/EnquiryActions'
 import { Led } from '@/components/instrument/Led'
 import { projects, projectCategories, type ProjectStatus, type ProjectCategory } from '@/data/projects'
 
-const statusLed: Record<ProjectStatus, { state: 'ok' | 'progress' | 'lit'; label: string }> = {
-  prototype: { state: 'progress', label: 'PROTOTYPE' },
-  'in-progress': { state: 'progress', label: 'IN DEVELOPMENT' },
+const statusLed: Record<ProjectStatus, { state: 'ok' | 'warn' | 'lit'; label: string }> = {
+  prototype: { state: 'warn', label: 'PROTOTYPE' },
+  'in-progress': { state: 'warn', label: 'IN DEVELOPMENT' },
   completed: { state: 'ok', label: 'COMPLETED' },
 }
 
@@ -48,7 +48,7 @@ export default function Portfolio() {
               type="button"
               onClick={() => setCategory('all')}
               aria-pressed={category === 'all'}
-              className={`tag ${category === 'all' ? 'tag-lit' : 'hover:border-line-2 hover:text-paper'}`}
+              className={`tag ${category === 'all' ? 'tag-lit' : 'hover:border-line-strong hover:text-hi'}`}
             >
               ALL
             </button>
@@ -58,7 +58,7 @@ export default function Portfolio() {
                 type="button"
                 onClick={() => setCategory(c)}
                 aria-pressed={category === c}
-                className={`tag ${category === c ? 'tag-lit' : 'hover:border-line-2 hover:text-paper'}`}
+                className={`tag ${category === c ? 'tag-lit' : 'hover:border-line-strong hover:text-hi'}`}
               >
                 {c.toUpperCase()}
               </button>
@@ -82,7 +82,7 @@ export default function Portfolio() {
                       <div className="grid gap-8 p-6 md:grid-cols-[1.2fr_1fr] md:p-9">
                         <div>
                           <div className="flex flex-wrap items-center gap-3">
-                            <span className="data-xs text-dim">CASE-{String(i + 1).padStart(2, '0')}</span>
+                            <span className="data-xs text-low">CASE-{String(i + 1).padStart(2, '0')}</span>
                             <Led state={led.state}>{led.label}</Led>
                             <span className="tag">{p.category.toUpperCase()}</span>
                           </div>
@@ -111,19 +111,19 @@ export default function Portfolio() {
                         <div className="border-t border-line px-6 py-8 md:px-9">
                           <div className="grid gap-8 md:grid-cols-2">
                             <div>
-                              <h3 className="data-xs text-dim" style={{ letterSpacing: '0.12em' }}>
+                              <h3 className="data-xs text-low" style={{ letterSpacing: '0.12em' }}>
                                 PROBLEM
                               </h3>
                               <p className="body-text mt-2">{p.problem}</p>
                             </div>
                             <div>
-                              <h3 className="data-xs text-dim" style={{ letterSpacing: '0.12em' }}>
+                              <h3 className="data-xs text-low" style={{ letterSpacing: '0.12em' }}>
                                 APPROACH
                               </h3>
                               <p className="body-text mt-2">{p.solution}</p>
                             </div>
                           </div>
-                          <h3 className="data-xs mt-8 text-dim" style={{ letterSpacing: '0.12em' }}>
+                          <h3 className="data-xs mt-8 text-low" style={{ letterSpacing: '0.12em' }}>
                             TECHNOLOGIES
                           </h3>
                           <ul className="mt-3 flex flex-wrap gap-2">
@@ -139,9 +139,9 @@ export default function Portfolio() {
                                 {p.link.label}
                               </Button>
                             )}
-                            <p className="data-xs text-dim">
+                            <p className="data-xs text-low">
                               RELATED SERVICE:{' '}
-                              <Link to={p.relatedService.to} className="text-cyan hover:underline">
+                              <Link to={p.relatedService.to} className="tap text-accent hover:underline">
                                 {p.relatedService.label}
                               </Link>
                             </p>

@@ -33,11 +33,11 @@ function ProductBin({ product, index }: { product: Product; index: number }) {
         className="flex flex-1 flex-col items-start p-5 text-left"
       >
         <div className="flex w-full items-center justify-between gap-3">
-          <span className="data-xs text-dim transition-colors group-hover:text-cyan">
+          <span className="data-xs text-low transition-colors group-hover:text-accent">
             BIN-{String(index + 1).padStart(2, '0')} · {product.category.toUpperCase()}
           </span>
           {product.demo && (
-            <span className="tag shrink-0 text-progress" title="Demonstration listing — confirm stock with us">
+            <span className="tag shrink-0 text-copper" title="Demonstration listing — confirm stock with us">
               DEMO
             </span>
           )}
@@ -46,7 +46,7 @@ function ProductBin({ product, index }: { product: Product; index: number }) {
         <p className="body-text mt-2 text-[0.9375rem]">{product.description}</p>
         <span className="mt-auto flex w-full items-center justify-between gap-2 pt-4">
           <Led state="off">STOCK UNVERIFIED</Led>
-          <span className="data-xs inline-flex items-center gap-1 text-cyan">
+          <span className="data-xs inline-flex items-center gap-1 text-accent">
             {open ? 'HIDE' : 'DETAILS'}
             <ChevronDown
               className={`size-3.5 transition-transform ${open ? 'rotate-180' : ''}`}
@@ -57,20 +57,20 @@ function ProductBin({ product, index }: { product: Product; index: number }) {
       </button>
       {open && (
         <div className="border-t border-line px-5 pb-5 pt-4">
-          <h4 className="data-xs text-dim" style={{ letterSpacing: '0.12em' }}>
+          <h4 className="data-xs text-low" style={{ letterSpacing: '0.12em' }}>
             TYPICAL SPECIFICATIONS
           </h4>
           <ul className="mt-3 flex flex-col gap-1.5">
             {product.specs.map((s) => (
-              <li key={s} className="data text-[0.8125rem] text-paper/85">
-                <span className="mr-2 text-cyan" aria-hidden="true">
+              <li key={s} className="data text-[0.8125rem] text-hi/85">
+                <span className="mr-2 text-accent" aria-hidden="true">
                   ·
                 </span>
                 {s}
               </li>
             ))}
           </ul>
-          <p className="data-xs mt-4 text-dim">
+          <p className="data-xs mt-4 text-low">
             PRICE &amp; AVAILABILITY: CONFIRMED ON ENQUIRY — NO ONLINE PAYMENTS
           </p>
           <div className="mt-4">
@@ -145,7 +145,7 @@ export default function ComponentsStore() {
           <div className="mt-8 flex flex-col gap-4 lg:flex-row lg:items-center">
             <div className="relative flex-1">
               <Search
-                className="pointer-events-none absolute left-3.5 top-1/2 size-4.5 -translate-y-1/2 text-dim"
+                className="pointer-events-none absolute left-3.5 top-1/2 size-4.5 -translate-y-1/2 text-low"
                 aria-hidden="true"
               />
               <label htmlFor="product-search" className="sr-only">
@@ -171,7 +171,7 @@ export default function ComponentsStore() {
                 className="field-input w-full lg:w-auto"
               >
                 {sortOptions.map((o) => (
-                  <option key={o.value} value={o.value} className="bg-ink-2">
+                  <option key={o.value} value={o.value} className="bg-panel">
                     {o.label}
                   </option>
                 ))}
@@ -185,7 +185,7 @@ export default function ComponentsStore() {
               type="button"
               onClick={() => setCategory('all')}
               aria-pressed={category === 'all'}
-              className={`tag ${category === 'all' ? 'tag-lit' : 'hover:border-line-2 hover:text-paper'}`}
+              className={`tag ${category === 'all' ? 'tag-lit' : 'hover:border-line-strong hover:text-hi'}`}
             >
               ALL
             </button>
@@ -195,7 +195,7 @@ export default function ComponentsStore() {
                 type="button"
                 onClick={() => setCategory(c)}
                 aria-pressed={category === c}
-                className={`tag ${category === c ? 'tag-lit' : 'hover:border-line-2 hover:text-paper'}`}
+                className={`tag ${category === c ? 'tag-lit' : 'hover:border-line-strong hover:text-hi'}`}
               >
                 {c.toUpperCase()}
               </button>
@@ -210,7 +210,7 @@ export default function ComponentsStore() {
               height={44}
               label={`${filtered.length} of ${products.length} listings shown`}
             />
-            <p className="data-xs pb-1 text-dim">
+            <p className="data-xs pb-1 text-low">
               SHOWING {filtered.length} OF {products.length} LISTINGS
             </p>
           </div>

@@ -42,17 +42,17 @@ export default function Founders() {
       {/* ── Founder feature ──────────────────────────── */}
       <section className="section-y pt-0!">
         <div className="container-x">
-          <Reveal className="brackets panel grid overflow-hidden md:grid-cols-[2fr_3fr]">
-            <div className="relative aspect-[4/5] overflow-hidden border-b border-line md:aspect-auto md:border-b-0 md:border-r">
+          <Reveal className="brackets panel-face on-face grid overflow-hidden md:grid-cols-[2fr_3fr]">
+            <div className="relative aspect-[4/5] overflow-hidden border-b border-face-line md:aspect-auto md:border-b-0 md:border-r">
               <Portrait f={founder} eager />
             </div>
             <div className="flex flex-col justify-center p-6 md:p-10">
-              <span className="data-xs text-dim">FDR-01 · FOUNDING TEAM</span>
+              <span className="data-xs text-face-low">FDR-01 · FOUNDING TEAM</span>
               <h2 className="display mt-5">{founder.name}</h2>
-              <p className="data mt-3 uppercase text-cyan" style={{ letterSpacing: '0.08em' }}>
+              <p className="data mt-3 uppercase text-accent-bright" style={{ letterSpacing: '0.08em' }}>
                 {founder.position}
               </p>
-              <p className="body-text mt-5 max-w-md text-dim">
+              <p className="body-text mt-5 max-w-md text-face-mid">
                 Detailed profile to be published as it is verified — consistent with how every
                 claim on this site is handled.
               </p>
@@ -74,13 +74,13 @@ export default function Founders() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {leadership.map((f, i) => (
               <Reveal key={f.file} className="panel flex flex-col overflow-hidden">
-                <div className="aspect-[4/5] overflow-hidden border-b border-line">
+                <div className="aspect-[4/5] overflow-hidden border-b border-face-line">
                   <Portrait f={f} />
                 </div>
                 <div className="flex flex-1 flex-col p-5">
-                  <span className="data-xs text-dim">FDR-{String(i + 2).padStart(2, '0')}</span>
+                  <span className="data-xs text-low">FDR-{String(i + 2).padStart(2, '0')}</span>
                   <h3 className="title mt-2 text-[1.15rem]">{f.name}</h3>
-                  <p className="data-xs mt-1.5 uppercase text-cyan" style={{ letterSpacing: '0.08em' }}>
+                  <p className="data-xs mt-1.5 uppercase text-accent" style={{ letterSpacing: '0.08em' }}>
                     {f.position}
                   </p>
                 </div>
@@ -88,7 +88,7 @@ export default function Founders() {
             ))}
           </div>
           <Reveal>
-            <p className="data-xs mt-8 text-dim">
+            <p className="data-xs mt-8 text-low">
               FULL BIOGRAPHIES WILL BE PUBLISHED AS THEY ARE VERIFIED — NO DETAILS ARE INVENTED
             </p>
           </Reveal>
@@ -96,7 +96,7 @@ export default function Founders() {
       </section>
 
       {/* ── Shared direction ─────────────────────────── */}
-      <section className="section-y border-t border-line bg-ink-2">
+      <section className="section-y border-t border-line bg-base-2">
         <div className="container-x grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
           <Reveal>
             <SectionHead
@@ -123,7 +123,7 @@ export default function Founders() {
       {/* ── Close panel ──────────────────────────────── */}
       <section className="section-y">
         <div className="container-x">
-          <Reveal className="brackets panel px-6 py-14 md:px-14 md:py-20">
+          <Reveal className="brackets panel-face on-face px-6 py-14 md:px-14 md:py-20">
             <h2 className="display-xl max-w-3xl">Work with the people behind the work.</h2>
             <p className="body-text mt-5 max-w-xl">
               Training programmes, components, IoT solutions, engineering projects or AGRINEX
@@ -139,7 +139,7 @@ export default function Founders() {
                 body: 'Hello VISRONIX Technologies,\n\nI would like to enquire about your programmes, products, and services.',
               }}
             />
-            <p className="data-xs mt-8 text-dim">
+            <p className="data-xs mt-8 text-face-low">
               {site.location.toUpperCase()} · WHATSAPP {WHATSAPP_DISPLAY}
             </p>
           </Reveal>

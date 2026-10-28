@@ -120,11 +120,11 @@ export function EnquiryForm({ fields, buildHandoff, submitLabel, note }: Props) 
     return (
       <div
         role="status"
-        className="panel border-cyan/40 p-6 md:p-8"
+        className="panel border-accent/40 p-6 md:p-8"
         aria-live="polite"
       >
         <div className="flex items-center gap-3">
-          <span className="flex size-9 items-center justify-center border border-cyan/40 bg-cyan/10 text-cyan">
+          <span className="flex size-9 items-center justify-center border border-accent/40 bg-accent/10 text-accent">
             <Check className="size-5" aria-hidden="true" />
           </span>
           <h3 className="title">Your enquiry is ready to send</h3>
@@ -133,7 +133,7 @@ export function EnquiryForm({ fields, buildHandoff, submitLabel, note }: Props) 
           Nothing has been sent yet. Choose how you would like to send it — your answers are
           prefilled in the message:
         </p>
-        <p className="data mt-3 border border-line bg-ink px-4 py-3 text-mist">
+        <p className="data mt-3 border border-line bg-base-2 px-4 py-3 text-mid">
           {handoff.summary}
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
@@ -236,7 +236,7 @@ export function EnquiryForm({ fields, buildHandoff, submitLabel, note }: Props) 
         <Button type="submit" className="self-start">
           {submitLabel}
         </Button>
-        <p className="data-xs text-dim">{note}</p>
+        <p className="data-xs text-low">{note}</p>
       </div>
     </form>
   )

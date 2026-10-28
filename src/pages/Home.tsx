@@ -17,8 +17,8 @@ import { EnquiryActions } from '@/components/EnquiryActions'
 
 const RAIL = ['CHENNAI · 13.08°N 80.27°E', 'WHATSAPP +91 99620 11415', 'ENQUIRIES OPEN']
 
-const DIVISION_STATE: Record<string, { state: 'lit' | 'progress'; label: string }> = {
-  '/agrinex': { state: 'progress', label: 'PROTOTYPE' },
+const DIVISION_STATE: Record<string, { state: 'lit' | 'warn'; label: string }> = {
+  '/agrinex': { state: 'warn', label: 'PROTOTYPE' },
 }
 const divisionState = (to: string) => DIVISION_STATE[to] ?? { state: 'lit' as const, label: 'OPEN' }
 
@@ -35,10 +35,10 @@ export default function Home() {
   return (
     <>
       {/* ── Hero: power-on ───────────────────────────── */}
-      <section className="flex min-h-[92svh] items-center border-b border-line">
+      <section className="on-face flex min-h-[92svh] items-center border-b border-face-line bg-face">
         <div className="container-x grid w-full gap-12 pb-20 pt-32 md:pt-36 lg:grid-cols-[1fr_20rem] lg:gap-16">
           <div>
-            <div className="boot-line mb-5 h-px bg-line-2" aria-hidden="true" />
+            <div className="boot-line mb-5 h-px bg-face-line" aria-hidden="true" />
             <StatusRail items={RAIL} />
             <h1 className="display-xl boot-rise mt-8 max-w-4xl" style={{ animationDelay: '0.3s' }}>
               Engineering ideas into intelligent solutions.
@@ -63,13 +63,13 @@ export default function Home() {
               </Button>
             </div>
             <div className="boot-rise mt-10" style={{ animationDelay: '0.8s' }}>
-              <Led state="progress">AGRINEX FLAGSHIP — PROTOTYPE IN DEVELOPMENT</Led>
+              <Led state="warn">AGRINEX FLAGSHIP — PROTOTYPE IN DEVELOPMENT</Led>
             </div>
           </div>
 
           {/* Division mini-index — navigation, not a stat panel */}
           <nav aria-label="Division index" className="hidden self-end lg:block">
-            <p className="data-xs border-b border-line pb-2 text-dim" style={{ letterSpacing: '0.14em' }}>
+            <p className="data-xs border-b border-face-line pb-2 text-face-low" style={{ letterSpacing: '0.14em' }}>
               DIVISION INDEX
             </p>
             <ul>
@@ -79,12 +79,12 @@ export default function Home() {
                   <li key={d.to} className="boot-rise" style={{ animationDelay: `${0.55 + i * 0.09}s` }}>
                     <Link
                       to={d.to}
-                      className="group flex items-center justify-between gap-3 border-b border-line py-2.5 transition-colors hover:bg-ink-2/60"
+                      className="group flex items-center justify-between gap-3 border-b border-face-line py-2.5 transition-colors hover:bg-face-2/60"
                     >
-                      <span className="data-xs text-dim transition-colors group-hover:text-cyan">
+                      <span className="data-xs text-face-low transition-colors group-hover:text-accent-bright">
                         VX-{d.index}
                       </span>
-                      <span className="flex-1 text-[0.8125rem] text-paper/85 transition-colors group-hover:text-paper">
+                      <span className="flex-1 text-[0.8125rem] text-face-hi/85 transition-colors group-hover:text-face-hi">
                         {d.name}
                       </span>
                       <Led state={st.state}>{st.label}</Led>
@@ -114,9 +114,9 @@ export default function Home() {
                 <Link
                   key={d.to}
                   to={d.to}
-                  className="group grid items-baseline gap-x-6 gap-y-1 border-b border-line py-6 transition-colors hover:bg-ink-2/50 md:grid-cols-[5rem_1fr_11rem_1.5rem]"
+                  className="group grid items-baseline gap-x-6 gap-y-1 border-b border-line py-6 transition-colors hover:bg-base-2/60 md:grid-cols-[5rem_1fr_11rem_1.5rem]"
                 >
-                  <span className="data text-dim transition-colors group-hover:text-cyan">
+                  <span className="data text-low transition-colors group-hover:text-accent">
                     VX-{d.index}
                   </span>
                   <span>
@@ -127,7 +127,7 @@ export default function Home() {
                     <Led state={st.state}>{st.label}</Led>
                   </span>
                   <ArrowRight
-                    className="hidden size-4 self-center text-dim transition-all group-hover:translate-x-1 group-hover:text-cyan md:block"
+                    className="hidden size-4 self-center text-low transition-all group-hover:translate-x-1 group-hover:text-accent md:block"
                     aria-hidden="true"
                   />
                 </Link>
@@ -138,10 +138,10 @@ export default function Home() {
       </section>
 
       {/* ── AGRINEX field band ───────────────────────── */}
-      <section className="section-y border-y border-line bg-ink-2">
+      <section className="section-y border-y border-line bg-base-2">
         <div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
-            <Led state="progress">FLAGSHIP // PROTOTYPE IN DEVELOPMENT</Led>
+            <Led state="warn">FLAGSHIP // PROTOTYPE IN DEVELOPMENT</Led>
             <h2 className="display mt-5">AGRINEX.</h2>
             <p className="lead mt-5">
               A smart agricultural robot, engineered in-house for the fields that feed us — built
@@ -168,11 +168,11 @@ export default function Home() {
                   key={j.stage}
                   className="flex items-baseline justify-between gap-4 border-b border-line py-3.5"
                 >
-                  <span className="text-[0.9375rem] font-medium text-paper">{j.stage}</span>
+                  <span className="text-[0.9375rem] font-medium text-hi">{j.stage}</span>
                   <span className="body-text hidden max-w-xs text-[0.875rem] sm:block">{j.text}</span>
                   <Led
                     state={
-                      j.state === 'done' ? 'ok' : j.state === 'current' ? 'progress' : 'off'
+                      j.state === 'done' ? 'ok' : j.state === 'current' ? 'warn' : 'off'
                     }
                   >
                     {j.state === 'done' ? 'COMPLETE' : j.state === 'current' ? 'IN PROGRESS' : 'PENDING'}
@@ -202,19 +202,19 @@ export default function Home() {
                 <Link
                   key={c.id}
                   to="/stem-education"
-                  className="group grid items-baseline gap-x-6 gap-y-2 border-b border-line py-6 transition-colors hover:bg-ink-2/50 md:grid-cols-[1fr_auto]"
+                  className="group grid items-baseline gap-x-6 gap-y-2 border-b border-line py-6 transition-colors hover:bg-base-2/60 md:grid-cols-[1fr_auto]"
                 >
                   <span>
                     <span className="title block">{c.title}</span>
                     <span className="body-text mt-1 block max-w-xl text-[0.9375rem]">
                       {c.description}
                     </span>
-                    <span className="data-xs mt-2 block text-dim">{c.format.toUpperCase()}</span>
+                    <span className="data-xs mt-2 block text-low">{c.format.toUpperCase()}</span>
                   </span>
                   <span className="flex items-center gap-4 md:justify-self-end">
                     <span className="tag">{c.level.toUpperCase()}</span>
                     <ArrowRight
-                      className="size-4 text-dim transition-all group-hover:translate-x-1 group-hover:text-cyan"
+                      className="size-4 text-low transition-all group-hover:translate-x-1 group-hover:text-accent"
                       aria-hidden="true"
                     />
                   </span>
@@ -226,13 +226,13 @@ export default function Home() {
             <Button to="/stem-education" variant="outline">
               Explore STEM programmes
             </Button>
-            <p className="data-xs text-dim">FOR SCHOOLS, COLLEGES AND INDIVIDUAL LEARNERS</p>
+            <p className="data-xs text-low">FOR SCHOOLS, COLLEGES AND INDIVIDUAL LEARNERS</p>
           </Reveal>
         </div>
       </section>
 
       {/* ── The parts shelf ──────────────────────────── */}
-      <section className="section-y border-y border-line bg-ink-2">
+      <section className="section-y border-y border-line bg-base-2">
         <div className="container-x">
           <Reveal>
             <SectionHead
@@ -248,16 +248,16 @@ export default function Home() {
                 <Link
                   key={p.id}
                   to="/electronic-components"
-                  className="group flex flex-col gap-3 bg-ink p-5 transition-colors hover:bg-ink-3"
+                  className="group flex flex-col gap-3 bg-panel p-5 transition-colors hover:bg-base-2"
                 >
-                  <span className="data-xs text-dim transition-colors group-hover:text-cyan">
+                  <span className="data-xs text-low transition-colors group-hover:text-accent">
                     {p.category.toUpperCase()}
                   </span>
                   <span className="title text-[1.05rem]">{p.name}</span>
                   <span className="mt-auto flex items-center justify-between gap-2 pt-2">
                     <Led state="off">STOCK UNVERIFIED</Led>
                     <ArrowRight
-                      className="size-4 text-dim transition-all group-hover:translate-x-1 group-hover:text-cyan"
+                      className="size-4 text-low transition-all group-hover:translate-x-1 group-hover:text-accent"
                       aria-hidden="true"
                     />
                   </span>
@@ -269,7 +269,7 @@ export default function Home() {
             <Button to="/electronic-components" variant="outline">
               Browse the catalogue
             </Button>
-            <p className="data-xs text-dim">CATALOGUE PREVIEW — STOCK AND PRICING CONFIRMED ON ENQUIRY</p>
+            <p className="data-xs text-low">CATALOGUE PREVIEW — STOCK AND PRICING CONFIRMED ON ENQUIRY</p>
           </Reveal>
         </div>
       </section>
@@ -277,7 +277,7 @@ export default function Home() {
       {/* ── Close panel ──────────────────────────────── */}
       <section className="section-y">
         <div className="container-x">
-          <Reveal className="brackets panel px-6 py-14 md:px-14 md:py-20">
+          <Reveal className="brackets panel-face on-face px-6 py-14 md:px-14 md:py-20">
             <h2 className="display-xl max-w-3xl">Ready when you are.</h2>
             <p className="body-text mt-5 max-w-xl">
               Training programmes, components, IoT solutions, engineering projects or AGRINEX
@@ -293,7 +293,7 @@ export default function Home() {
                 body: 'Hello VISRONIX Technologies,\n\nI would like to enquire about your programmes, products, and services.',
               }}
             />
-            <p className="data-xs mt-8 text-dim">
+            <p className="data-xs mt-8 text-face-low">
               {site.location.toUpperCase()} · WHATSAPP {WHATSAPP_DISPLAY}
             </p>
           </Reveal>

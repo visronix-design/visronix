@@ -40,7 +40,7 @@ const statements = [
 ]
 
 const roadmap = [
-  { state: 'progress' as const, label: 'IN PROGRESS', text: 'Take AGRINEX from prototype to field-tested pilot deployments.' },
+  { state: 'warn' as const, label: 'IN PROGRESS', text: 'Take AGRINEX from prototype to field-tested pilot deployments.' },
   { state: 'lit' as const, label: 'ACTIVE', text: 'Grow structured STEM programmes with partner schools and colleges.' },
   { state: 'off' as const, label: 'PENDING', text: 'Expand the components catalogue with verified stock and pricing.' },
   { state: 'off' as const, label: 'PENDING', text: 'Develop custom IoT products for homes and small businesses.' },
@@ -81,7 +81,7 @@ export default function About() {
                 {i < loop.length - 1 && (
                   <div
                     aria-hidden="true"
-                    className="h-px w-10 shrink-0 bg-line-2 max-md:h-6 max-md:w-px"
+                    className="h-px w-10 shrink-0 bg-line-strong max-md:h-6 max-md:w-px"
                   />
                 )}
               </div>
@@ -91,7 +91,7 @@ export default function About() {
       </section>
 
       {/* ── Division pinout: the same index table ────── */}
-      <section className="section-y border-t border-line bg-ink-2">
+      <section className="section-y border-t border-line bg-base-2">
         <div className="container-x">
           <Reveal>
             <SectionHead
@@ -105,15 +105,15 @@ export default function About() {
               <Link
                 key={d.to}
                 to={d.to}
-                className="group grid items-baseline gap-x-6 gap-y-1 border-b border-line py-5 transition-colors hover:bg-ink/50 md:grid-cols-[5rem_1fr_1.5rem]"
+                className="group grid items-baseline gap-x-6 gap-y-1 border-b border-line py-5 transition-colors hover:bg-panel/70 md:grid-cols-[5rem_1fr_1.5rem]"
               >
-                <span className="data text-dim transition-colors group-hover:text-cyan">VX-{d.index}</span>
+                <span className="data text-low transition-colors group-hover:text-accent">VX-{d.index}</span>
                 <span>
-                  <span className="text-[1.05rem] font-medium text-paper">{d.name}</span>
+                  <span className="text-[1.05rem] font-medium text-hi">{d.name}</span>
                   <span className="body-text mt-0.5 block max-w-xl text-[0.9375rem]">{d.summary}</span>
                 </span>
                 <ArrowRight
-                  className="hidden size-4 self-center text-dim transition-all group-hover:translate-x-1 group-hover:text-cyan md:block"
+                  className="hidden size-4 self-center text-low transition-all group-hover:translate-x-1 group-hover:text-accent md:block"
                   aria-hidden="true"
                 />
               </Link>
@@ -131,10 +131,10 @@ export default function About() {
                 key={s.label}
                 className="grid gap-x-10 gap-y-3 border-b border-line py-8 md:grid-cols-[10rem_1fr] md:py-10"
               >
-                <span className="data-xs pt-1.5 text-cyan" style={{ letterSpacing: '0.14em' }}>
+                <span className="data-xs pt-1.5 text-accent" style={{ letterSpacing: '0.14em' }}>
                   {s.label}
                 </span>
-                <p className="max-w-2xl text-[1.05rem] leading-relaxed text-paper/90">{s.text}</p>
+                <p className="max-w-2xl text-[1.05rem] leading-relaxed text-hi/90">{s.text}</p>
               </div>
             ))}
           </Reveal>
@@ -176,7 +176,7 @@ export default function About() {
       </section>
 
       {/* ── Status panel: honesty as designed absence ── */}
-      <section className="section-y border-t border-line bg-ink-2">
+      <section className="section-y border-t border-line bg-base-2">
         <div className="container-x">
           <Reveal>
             <SectionHead
@@ -186,7 +186,7 @@ export default function About() {
             />
           </Reveal>
           <Reveal className="mt-10 grid gap-px border border-line bg-line lg:grid-cols-2">
-            <div className="flex flex-col items-center justify-center gap-4 bg-ink p-8 text-center">
+            <div className="flex flex-col items-center justify-center gap-4 bg-panel p-8 text-center">
               <Led state="lit">FOUNDER PROFILES — PUBLISHED</Led>
               <p className="body-text max-w-sm text-[0.9375rem]">
                 The founders and leadership team are now published on the Founders page.
@@ -195,7 +195,7 @@ export default function About() {
                 Meet the founders
               </Button>
             </div>
-            <div className="flex flex-col items-center justify-center gap-4 bg-ink p-8 text-center">
+            <div className="flex flex-col items-center justify-center gap-4 bg-panel p-8 text-center">
               <Led state="off">ACHIEVEMENTS &amp; MILESTONES — AWAITING VERIFICATION</Led>
               <p className="body-text max-w-sm text-[0.9375rem]">
                 Verified achievements and company milestones will appear here as they are
