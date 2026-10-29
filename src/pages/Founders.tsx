@@ -42,19 +42,15 @@ export default function Founders() {
       {/* ── Founder feature ──────────────────────────── */}
       <section className="section-y pt-0!">
         <div className="container-x">
-          <Reveal className="brackets panel-face on-face grid overflow-hidden md:grid-cols-[2fr_3fr]">
-            <div className="relative aspect-[4/5] overflow-hidden border-b border-face-line md:aspect-auto md:border-b-0 md:border-r">
+          <Reveal className="panel grid overflow-hidden md:grid-cols-[2fr_3fr]">
+            <div className="aspect-[4/5] overflow-hidden border-b border-line p-3 md:aspect-auto md:border-b-0 md:border-r">
               <Portrait f={founder} eager />
             </div>
             <div className="flex flex-col justify-center p-6 md:p-10">
-              <span className="data-xs text-face-low">FDR-01 · FOUNDING TEAM</span>
+              <span className="data-xs text-low">FDR-01 · FOUNDING TEAM</span>
               <h2 className="display mt-5">{founder.name}</h2>
-              <p className="data mt-3 uppercase text-accent-bright" style={{ letterSpacing: '0.08em' }}>
+              <p className="data mt-3 uppercase text-accent" style={{ letterSpacing: '0.08em' }}>
                 {founder.position}
-              </p>
-              <p className="body-text mt-5 max-w-md text-face-mid">
-                Detailed profile to be published as it is verified — consistent with how every
-                claim on this site is handled.
               </p>
             </div>
           </Reveal>
@@ -74,7 +70,7 @@ export default function Founders() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {leadership.map((f, i) => (
               <Reveal key={f.file} className="panel flex flex-col overflow-hidden">
-                <div className="aspect-[4/5] overflow-hidden border-b border-face-line">
+                <div className="aspect-[4/5] overflow-hidden border-b border-line p-3">
                   <Portrait f={f} />
                 </div>
                 <div className="flex flex-1 flex-col p-5">
@@ -87,11 +83,6 @@ export default function Founders() {
               </Reveal>
             ))}
           </div>
-          <Reveal>
-            <p className="data-xs mt-8 text-low">
-              FULL BIOGRAPHIES WILL BE PUBLISHED AS THEY ARE VERIFIED — NO DETAILS ARE INVENTED
-            </p>
-          </Reveal>
         </div>
       </section>
 

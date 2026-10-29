@@ -19,6 +19,11 @@ const routes = [
 
 const browser = await chromium.launch()
 const page = await browser.newPage({ viewport: { width: 1280, height: 800 } })
+// Headless full-page captures don't always pump frames for the scroll pass,
+// so IntersectionObserver reveals can stay opacity-0 in shots. Reduced-motion
+// renders every reveal visible immediately (site CSS honours it), making
+// captures faithful to what a scrolling visitor sees.
+await page.emulateMedia({ reducedMotion: 'reduce' })
 for (const [route, name] of routes) {
   await page.goto(BASE + route, { waitUntil: 'networkidle' })
   // scroll through the page so every reveal fires, then back to top
